@@ -1,4 +1,4 @@
-import java.io.FileNotFoundException;
+import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,8 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class ToXml {
+
+    private static final Logger log = Logger.getLogger(ValidateMachine.class.getName());
+
 
     public void createMultiballStructure() {
         List<Map<List<Set<Integer>>, String>> list = new ArrayList<Map<List<Set<Integer>>, String>>();
@@ -24,14 +28,12 @@ public class ToXml {
     }
 
     private void writeToXml(List list) {
-        FileOutputStream toXml = null;
-        try {
-            toXml = new FileOutputStream("C:\\Users\\Вова\\Practice10\\ToXml");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        try (FileOutputStream toXml = new FileOutputStream("ToXml")) {
+            XMLEncoder xmlEncoder = new XMLEncoder(toXml);
+            xmlEncoder.writeObject(list);
+            xmlEncoder.close();
+        } catch (Exception e) {
+            log.info(e.getMessage());
         }
-        java.beans.XMLEncoder xmlEncoder = new java.beans.XMLEncoder(toXml);
-        xmlEncoder.writeObject(list);
-        xmlEncoder.close();
     }
 }
