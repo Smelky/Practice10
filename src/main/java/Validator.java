@@ -1,4 +1,3 @@
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +6,6 @@ public class Validator {
     private static final Logger log = Logger.getLogger(Validator.class.getName());
 
     public void phoneNumberValidator(String number) {
-
         Pattern numberValidator = Pattern.compile("^(\\+\\d{2})?\\d{10}$");
         Matcher findMatches = numberValidator.matcher(number);
         if (findMatches.matches()) {
