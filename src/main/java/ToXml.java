@@ -1,6 +1,9 @@
 import org.apache.log4j.Logger;
+
 import java.beans.XMLEncoder;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,10 +30,9 @@ public class ToXml {
     }
 
     private void writeToXml(List list) {
-        try (FileOutputStream toXml = new FileOutputStream("src/main/resources/ToXml")) {
-            XMLEncoder xmlEncoder = new XMLEncoder(toXml);
+        try (FileOutputStream toXml = new FileOutputStream("src/main/resources/ToXml");
+             XMLEncoder xmlEncoder = new XMLEncoder(toXml)) {
             xmlEncoder.writeObject(list);
-            xmlEncoder.close();
         } catch (Exception e) {
             LOGGER.info(e.getMessage());
         }
