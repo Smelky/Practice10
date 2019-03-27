@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.assertFalse;
 
 public class TestValidateMachine {
     private ValidateMachine validator;
@@ -13,21 +13,21 @@ public class TestValidateMachine {
 
     @Test
     public void testPhoneNumberValidator() {
-        assertTrue(validator.phoneNumberValidator("+380631021340"));
+        assertFalse(validator.phoneNumberValidator("+380631021340"));
     }
 
     @Test
     public void testEmailAdressValidator() {
-        assertTrue(validator.emailAddressValidator("12321@gmail.com"));
+        assertFalse(validator.emailAddressValidator("12321@gmail.com"));
     }
 
     @Test
     public void testDateValidator() {
-        assertTrue(validator.dateValidator("01.04.1998"));
+        assertFalse(validator.dateValidator("01.04.1998"));
     }
 
     @Test
     public void testIpAddressValidator() {
-        assertTrue(validator.ipAddressValidator("192.168.0.1"));
+        assertFalse(validator.ipAddressValidator("192.168.0.1"));
     }
 }
