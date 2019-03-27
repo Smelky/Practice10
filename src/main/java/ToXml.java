@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class ToXml {
 
-    private static final Logger log = Logger.getLogger(ValidateMachine.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ValidateMachine.class.getName());
 
 
     public void createMultiballStructure() {
@@ -28,12 +28,12 @@ public class ToXml {
     }
 
     private void writeToXml(List list) {
-        try (FileOutputStream toXml = new FileOutputStream("ToXml")) {
+        try (FileOutputStream toXml = new FileOutputStream("src/main/resources/ToXml")) {
             XMLEncoder xmlEncoder = new XMLEncoder(toXml);
             xmlEncoder.writeObject(list);
             xmlEncoder.close();
         } catch (Exception e) {
-            log.info(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
     }
 }
