@@ -1,3 +1,4 @@
+import org.apache.log4j.Logger;
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -6,12 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class ToXml {
 
-    private static final Logger LOGGER = Logger.getLogger(ValidateMachine.class.getName());
-
+    private static final Logger LOGGER = Logger.getLogger(ValidateMachine.class);
 
     public void createMultiballStructure() {
         List<Map<List<Set<Integer>>, String>> list = new ArrayList<Map<List<Set<Integer>>, String>>();
